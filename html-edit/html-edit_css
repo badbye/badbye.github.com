@@ -14,6 +14,13 @@ body {
   text-align: center;
 }
 
+.back {
+    float:left;
+    position:fixed;
+    top:50%;
+    left:100px;
+}
+
 .site {
   font-size: 110%;
   text-align: justify;
@@ -22,44 +29,60 @@ body {
   line-height: 1.5em;
 }
 
+h1 {
+  margin-bottom: 1em;
+  font-size:150%;
+  text-align: center
+}
+
+h2, h3, h4, h5, h6 {
+  font-size: 100%;
+}
+
+p {
+  margin: 1em 0;
+}
+
+a {
+  color: #00a;
+  text-decoration:none;
+}
+
+a:hover {
+  color: black;
+}
+
+a:visited {
+  color: #a0a;
+}
+
+table {
+  font-size: inherit;
+  font: 100%;
+}
+
 .title {
   color: #a00;
   font-weight: bold;
-  margin-top: 1.5em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid #eee;
+  margin-bottom: 2em;
+  border-bottom: 4px solid #eee;
 }
 
-  .site .title p{
-    text-align:center;
-    font-size:150%;
-  }
-  .site .title a {
+.title a {
     color: #a00;
     text-decoration: none;
   }
 
-  .site .title a:hover {
+.title a:hover {
     color: black;
   }
 
-  .site .title a.extra {
+.title a.extra {
     color: #aaa;
     text-decoration: none;
     margin-left: 1em;
   }
 
-  .site .title a.extra:hover {
+ .title a.extra:hover {
     color: black;
   }
-
-  .site .meta {
-    color: #aaa;
-  }
-  .site .date{
-    color:red;
-    text-align:right;
-  }
-  .site .date .span{
-    color: #aaa;
-}

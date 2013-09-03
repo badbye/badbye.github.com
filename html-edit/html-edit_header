@@ -1,0 +1,12 @@
+<div class='back'>
+    <a href="/">
+        <image src='/images/goBack.png' style="width:100px;height:100px"></image>
+    </a>
+</div>
+<div class='site'>
+  <!--
+  <div class="title">
+	<a class="extra" href="/">HOME</a>
+	<a class="extra" href="/me.html">ABOUT ME</a>
+  </div>
+  -->
