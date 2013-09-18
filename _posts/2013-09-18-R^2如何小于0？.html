@@ -255,9 +255,9 @@ hljs.initHighlightingOnLoad();
 
 <p>问题在哪里？<a href="http://cos.name/cn/topic/102862">这个帖子</a>里的一句话让我醍醐灌顶：\( TSS=ESS+RSS \)在无截距项时是不成立的！且再推导一遍方差分解的过程得到：</p>
 
-<p>\[ TSS=RSS+ESS-2\bar{y}\sum{(y_i-\hat{y_i})}+2\beta\sum{(y_i-\hat{y_i})x_i} \]</p>
+<p>\[ TSS=RSS+ESS-2\bar{y}\sum{(y_i-\hat{y_i})}+2\sum{(y_i-\hat{y_i})\hat{y_i}} \]</p>
 
-<p>在有截距下的假设下，\( Y=\beta_0+\beta_1X \)，为最小化\( TSS \)，分别对\( \beta_0 \)和\( \beta_1 \)求偏导得到正规方程组：</p>
+<p>在有截距下的假设下，\( Y=\beta_0+\beta_1X \)，为最小化\( RSS \)，分别对\( \beta_0 \)和\( \beta_1 \)求偏导得到正规方程组：</p>
 
 <p>\[ \sum{(y_i-\hat{y_i})x_i}=0 \]
 \[ \sum{(y_i-\hat{y_i})}=0 \]</p>
