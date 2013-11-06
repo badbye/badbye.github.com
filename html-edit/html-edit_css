@@ -29,6 +29,13 @@ body {
   line-height: 1.5em;
 }
 
+#disqus_thread{
+  text-align: justify;
+  width: 42em;
+  margin: 3em auto 2em auto;
+  line-height: 1.5em;
+}
+
 h1 {
   margin-bottom: 1em;
   font-size:150%;
