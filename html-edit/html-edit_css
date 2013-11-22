@@ -36,6 +36,16 @@ body {
   line-height: 1.5em;
 }
 
+.site ul {
+  width: 36em;
+  margin: auto;
+}
+
+.site ol {
+  width: 36em;
+  margin: auto;
+}
+
 h1 {
   margin-bottom: 1em;
   font-size:150%;
