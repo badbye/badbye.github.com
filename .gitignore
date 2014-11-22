@@ -1,2 +1,8 @@
 index.lock
-.~
+*.RData
+*.Rhistory
+*.cache/
+*~
+.Rproj.user
+.Rproj.user/
+PaxHeader/
