@@ -15,7 +15,7 @@ exclude:
 layouts: ./_noita
 
 noita:
-  name: Home
+  name: Noita
   description: Jekyll theme built with Foundation
   author:
     name: Anatol Broder
