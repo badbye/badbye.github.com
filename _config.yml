@@ -1,6 +1,9 @@
-markdown: kramdown
+markdown: KramdownPygments
+kramdown:
+  default_lang: php
 permalink: /blog/:year/:title/
 relative_permalinks: true
+pygments: true
 exclude:
   - CNAME
   - Gemfile
