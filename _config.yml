@@ -24,11 +24,11 @@ gaaccount: 'UA-63950333-1'
 # Set this to your disqus shortname to enable comments. Note that the 'comments'
 # setting below must also be true. Individual posts can override 'comments' to
 # disable on a post-by-post basis
-disqus: yalei
+# disqus: yalei
 comments: true
 
 permalink: /:year/:month/:title
-# paginate: 3
+paginate: 3
 
 highlighter: pygments
 markdown: redcarpet
