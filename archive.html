@@ -16,7 +16,7 @@ layout: default
             <ul>
         {% endif %}
     {% endunless %}
-    <li><a href="{{ site.baseurl}}{{ post.url }}" title="{{post.date | date:"%Y-%m-%d"}}: {{ post.title }}"><span style="font-family:monospace;">{{ post.date | date: "%b %d" }} - {{ post.title }}  </span> </a></li>
+    <li><a href="{{ site.url}}{{ post.url }}" title="{{post.date | date:"%Y-%m-%d"}}: {{ post.title }}"><span style="font-family:monospace;">{{ post.date | date: "%b %d" }} - {{ post.title }}  </span> </a></li>
 {% endfor %}
 </ul>
 </div>
