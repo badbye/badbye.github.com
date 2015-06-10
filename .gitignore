@@ -6,3 +6,5 @@ index.lock
 .Rproj.user
 .Rproj.user/
 PaxHeader/
+_site/
+_draft/
