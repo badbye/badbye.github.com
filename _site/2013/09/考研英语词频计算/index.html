@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BADBYE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/badbye.github.com/js/jquery.min.js"></script>
+    <script src="/badbye.github.com/js/bootstrap.min.js"></script>
+    <link href="/badbye.github.com/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/badbye.github.com/css/theme.css" rel="stylesheet">
+    <link href="/badbye.github.com/css/pygments.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/badbye.github.com/">BADBYE</a>
+              </div>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/badbye.github.com/">Home</a></li>
+                    <li class="active visible-xs-block"><a href="/badbye.github.com/links.html">Links</a></li>
+                    <li class="active"><a href="/badbye.github.com/archive.html">Archive</a></li>
+                    <li class="active"><a href="/badbye.github.com/about.html">About</a></li>
+                    <li class="active"><a href="/badbye.github.com/feed.xml">RSS</a></li>
+                    
+                      <li class="active"><a href="https://github.com/badbye/badbye.github.com">Github</a></li>
+                    
+                </ul>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container container-left">
+    <div class="row">
+        <div class="col-md-3 hidden-xs">
+            <div class="sidebar well">
+Welcome to my blog!
+</div>
+
+<div class="sidebar well" id = "recentPosts">
+    <h1>Recent Posts</h1>
+    <ul>
+        
+          <li><a href="/badbye.github.com/2015/04/Rmd2pdf">Rmd到PDF的转换</a></li>
+        
+          <li><a href="/badbye.github.com/2014/10/Logistic%20Regression%20in%20R%20and%20Python">Logistic Regression in R and Python</a></li>
+        
+          <li><a href="/badbye.github.com/2013/11/%E9%9D%9E%E5%8F%82%E6%95%B0%E7%BB%9F%E8%AE%A1">非参数统计</a></li>
+        
+          <li><a href="/badbye.github.com/2013/11/%E7%AC%AC%E5%85%AD%E5%B1%8AR%E8%AF%AD%E8%A8%80%E4%BC%9A%E8%AE%AE%E8%AE%B0%E4%BA%8B">第六届R语言会议记事</a></li>
+        
+          <li><a href="/badbye.github.com/2013/09/$R%5E2$%E5%A6%82%E4%BD%95%E5%B0%8F%E4%BA%8E0%EF%BC%9F">$R^2$如何小于0？</a></li>
+        
+    </ul>
+</div>
+
+<div class="sidebar well" id="links">
+<h1>Links</h1>
+<ul>
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li>
+</ul>
+
+</div>
+
+        </div>
+        <div class="col-md-9">
+          <div class="article">
+            <div class="well">
+                <h1><a href="/badbye.github.com/2013/09/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD%E8%AF%8D%E9%A2%91%E8%AE%A1%E7%AE%97">Sep 15, 2013 - 考研英语词频计算</a></h1>
+<!--              
+                <p class="author"><a href="#disqus_thread">Comments</a></p>
+             -->
+            <div class="post-content">
+            <p>按照大纲要求，考研英语需要识忆6000+个词汇，其中包含一批比较生僻的词汇。但大纲要求的单词不可能全部出现在试卷中，甚至有的可能根本就没出现过吧？如果真是这样，计算出频率较高的词汇，基础较差的孩子只需把握重点，有的放矢，应该能省不少功夫。其实算出来发现不用背6000+的，需要学的连2000都不到！</p>
+
+<p>介绍下步骤，先清洗掉一些你从来都不会去读的东西，比如标题，以及一些标点符号和数字等;然后删去没必要再学的单词，比如&#39;a&#39;，&#39;the&#39;;接下来还得去除词性变化，比如把&#39;congrates&#39;还原到&#39;congrate&#39;;最后再计算词频。简而言之就是大致经过四个阶段：数据清洗$\to$去除停止词$\to$词干化$\to$计算词频。</p>
+
+<h2 id="一-数据清洗">(一) 数据清洗</h2>
+
+<p>考研英语共分四部分：“section I Use of English”、“section II Reading Comprehension”、“section III Translation”和“section IV Writing”，这些标题以及其他语句如：“Read the following text. Choose the best word(s) for each numbered blank and mark A, B, C or D on ANSWER SHEET 1. (10 points)”在每年的试卷中都会出现，因此在统计词频之前应去除这些语句的干扰。</p>
+
+<p>此外文档中还存在除单词以外的其他干扰：</p>
+
+<ul>
+<li>每部分的标题号：Part A, B, C, D；</li>
+<li>阅读的题号：Text 1, 2, 3, 4；</li>
+<li>数字包括题号等；</li>
+<li>选项的标号：[A]到[G]；</li>
+<li>作文部分</li>
+</ul>
+
+<p>选取<a href="http://pan.baidu.com/s/1bnlQtqf">2003—2013年的真题</a>进行计算,对数据手工去除作文部分后，运用正则表达式将文档中的其他干扰去除。正则表达式是一种操作字符串的逻辑公式，可以通过它匹配到符合某个语法规则的字符，从而获取我们想要的特定部分。</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r">text <span class="o">=</span> <span class="kp">readLines</span><span class="p">(</span><span class="s">&quot;2003-2013考研英语真题.txt&quot;</span><span class="p">)</span>
+
+<span class="c1">## 清洗数据</span>
+<span class="kn">require</span><span class="p">(</span>stringr<span class="p">)</span>
+text <span class="o">=</span> str_trim<span class="p">(</span>text<span class="p">)</span>  <span class="c1">#去除字符串两端的空格</span>
+
+<span class="c1"># 去除以‘section’；‘direction’;&#39;reading the</span>
+<span class="c1"># following&#39;;&#39;part&#39;,&#39;text&#39;开头的段落</span>
+text.clean <span class="o">=</span> <span class="kp">grep</span><span class="p">(</span><span class="s">&quot;^section|^direction|read the following|part|text&quot;</span><span class="p">,</span> text<span class="p">,</span> 
+    perl <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> value <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> invert <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> ignore.case <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+
+<span class="c1"># 去除选项[A]-[G]和字母以外的字符变为空格</span>
+text.clean <span class="o">=</span> <span class="kp">gsub</span><span class="p">(</span><span class="s">&quot;\\[[A-G]\\]|[^a-zA-Z]&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> text.clean<span class="p">,</span> perl <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> ignore.case <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+text.clean <span class="o">=</span> <span class="kp">paste</span><span class="p">(</span>text.clean<span class="p">,</span> collapse <span class="o">=</span> <span class="s">&quot; &quot;</span><span class="p">)</span>  <span class="c1">#连接文档</span>
+
+<span class="c1"># 去除多余的空格和tab符、换行符等</span>
+text.clean <span class="o">=</span> <span class="kp">gsub</span><span class="p">(</span><span class="s">&quot; +|\t|\n|\r&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> text.clean<span class="p">)</span>
+</code></pre></div>
+<h2 id="二-停止词和词干化">(二) 停止词和词干化</h2>
+
+<h3 id="停止词">停止词</h3>
+
+<p>完成第一次清洗后，文档还中包含众多“the”、“a”、“of”等词，这些都是最最简单而又最最常用的单词，不足以再花时间复习一下，因此需要第二次清洗，去除简单词汇。在网络搜索中有stop word即停止词的概念，很多词汇不可避免的要用到但又无实际意义或者非常普遍，那么在搜索排名时就不应将这些词的频率纳入算法计算的范围内。</p>
+
+<p>在各个领域停止词的定义不尽相同，在这里采用<a href="http://pan.baidu.com/share/link?shareid=1488556438&amp;uk=622761108">新东方考研英语单词</a>作为字典，其中包含3600左右的考研常用单词(已剔除简单单词)，故只需从文档中提取字典中的单词即可。</p>
+
+<h3 id="词干化">词干化</h3>
+
+<p>另一个问题就是：在英语中一个单词有多种形式，如like可以有likes,liking,liked等形式，其含义都是相同的，如《神雕侠侣》中的过儿和杨过、姑姑和小龙女都是指同一个人，所以在计算词频之前，需要再次对数据进行加工处理将其还原，这个过程称为词干化。SnowballC包提供了词干化功能，例：</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kn">require</span><span class="p">(</span>SnowballC<span class="p">)</span>
+wordStem<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;liked&quot;</span><span class="p">,</span> <span class="s">&quot;likes&quot;</span><span class="p">,</span> <span class="s">&quot;liking&quot;</span><span class="p">,</span> <span class="s">&quot;confuse&quot;</span><span class="p">,</span> <span class="s">&quot;combine&quot;</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">[1] &quot;like&quot;   &quot;like&quot;   &quot;like&quot;   &quot;confus&quot; &quot;combin&quot;
+</code></pre></div>
+<p>从例子中看出这个算法并不完美，对于“confuse”,“combine”以“e”结尾的单词强制去除“e”，效果并不理想。</p>
+
+<p>基于以上两个问题，如果直接从文档中提取字典中的词汇会忽略词汇的众多变化，将文档词干化后再与字典匹配会由于词干化算法的缺陷出现较大失误。</p>
+
+<p>不过如果两个词词干化后是一样的，那么这两个词有很大可能是同一个词的不同形式。因此一个较好的做法是将文档和字典同时词干化后再进行匹配统计，即将文档词干化后从中找到与字典中的词干相同的词汇。</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># 载入字典</span>
+dictionary <span class="o">=</span> <span class="kp">scan</span><span class="p">(</span><span class="s">&quot;新东方考研单词.txt&quot;</span><span class="p">,</span> what <span class="o">=</span> <span class="s">&quot;character&quot;</span><span class="p">)</span>
+<span class="c1"># 清洗字典中的不相干字符‘List 1-50’ (共50章)</span>
+dictionary <span class="o">=</span> dictionary<span class="p">[</span><span class="kp">grep</span><span class="p">(</span><span class="s">&quot;List|\\d&quot;</span><span class="p">,</span> dictionary<span class="p">,</span> perl <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> invert <span class="o">=</span> <span class="bp">T</span><span class="p">)]</span>
+<span class="c1"># 将字典词干化</span>
+dictionary.stem <span class="o">=</span> wordStem<span class="p">(</span>dictionary<span class="p">)</span>
+<span class="c1"># 计算词干重复的个数</span>
+<span class="p">(</span>repeat_stem <span class="o">=</span> <span class="kp">length</span><span class="p">(</span>dictionary<span class="p">)</span> <span class="o">-</span> <span class="kp">length</span><span class="p">(</span><span class="kp">unique</span><span class="p">(</span>dictionary.stem<span class="p">)))</span>
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">[1] 247
+</code></pre></div>
+<p>通过计算，对字典词干化后共有247个词汇词干化后与其他词汇相同，词干相同的前30个词是：</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># 来看哪些词词干化之后是相同的 词干化之后各词的频率</span>
+dic.stem.fre <span class="o">=</span> <span class="kp">table</span><span class="p">(</span>dictionary.stem<span class="p">)</span>
+<span class="c1"># 查找每个词干的频率</span>
+dic.fre <span class="o">=</span> <span class="kp">mapply</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> dic.stem.fre<span class="p">[</span>x<span class="p">],</span> dictionary.stem<span class="p">)</span>
+<span class="c1"># 构造数据框并按频率排序</span>
+dic <span class="o">=</span> <span class="kt">data.frame</span><span class="p">(</span>dictionary<span class="p">,</span> dictionary.stem<span class="p">,</span> dic.fre<span class="p">)</span>
+<span class="c1"># 按频率和字母排序</span>
+dic.order <span class="o">=</span> dic<span class="p">[</span><span class="kp">order</span><span class="p">(</span>dic<span class="o">$</span>dic.fre<span class="p">,</span> dic<span class="o">$</span>dictionary.stem<span class="p">,</span> decreasing <span class="o">=</span> <span class="bp">T</span><span class="p">),</span> <span class="p">]</span>
+<span class="c1"># 查看前30个词干相同的词</span>
+<span class="kp">print</span><span class="p">(</span><span class="kp">head</span><span class="p">(</span>dic.order<span class="p">,</span> <span class="m">30</span><span class="p">),</span> row.names <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">     dictionary dictionary.stem dic.fre
+       organize           organ       5
+        organic           organ       5
+   organization           organ       5
+          organ           organ       5
+       organism           organ       5
+       generate           gener       4
+       generous           gener       4
+     generalize           gener       4
+      generator           gener       4
+       critical          critic       4
+      criticize          critic       4
+         critic          critic       4
+      criticism          critic       4
+  correspondent      correspond       4
+     correspond      correspond       4
+ correspondence      correspond       4
+  corresponding      correspond       4
+      tolerance           toler       3
+       tolerate           toler       3
+       tolerate           toler       3
+    responsible         respons       3
+       response         respons       3
+ responsibility         respons       3
+         resist          resist       3
+      resistant          resist       3
+     resistance          resist       3
+     prosperity         prosper       3
+     prosperous         prosper       3
+        prosper         prosper       3
+      precedent          preced       3
+</code></pre></div>
+<p>最多有5个单词的词干相同，且词干相同的词汇都具有相同的词根因而具有相似的意义，如“organ”和“organic”均有器官的意思只是词性不同，而“organism”则由器官引申到有机体；“critical”，“criticize”均有批评挑剔的意思，只是词性不同，“critic”则是批评家的意思。其他不一一解释，可以看出词干相同的词汇，其含义大致相近。事实上这也是一种词汇记忆的方法 —词根记忆法，知道“critic”是批评家的意思，看到“critical”便可联想到批评。</p>
+
+<p>因此同时将文档和字典词干化后再匹配，将每个词的词频转换为计算其词干出现的频率， 由于词与词干的意义相似，误差并不大，是可行的。</p>
+
+<h2 id="三-词干的词频">(三) 词干的词频</h2>
+
+<p>如前文所述将文档词干化，首先转换格式变成一个词向量，然后汇总统计，最后词干化，这样可以保留每个词干所对应的词汇。</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r">words <span class="o">=</span> <span class="kp">unlist</span><span class="p">(</span><span class="kp">strsplit</span><span class="p">(</span>text.clean<span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">))</span>  <span class="c1"># 分割文档</span>
+words.count <span class="o">=</span> <span class="kp">table</span><span class="p">(</span><span class="kp">tolower</span><span class="p">(</span>words<span class="p">))</span>  <span class="c1"># 转换为小写并计数</span>
+words.data <span class="o">=</span> <span class="kt">data.frame</span><span class="p">(</span>words.count<span class="p">)</span>  <span class="c1"># 转换为数据框</span>
+<span class="kp">colnames</span><span class="p">(</span>words.data<span class="p">)</span> <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;word&quot;</span><span class="p">,</span> <span class="s">&quot;fre&quot;</span><span class="p">)</span>  <span class="c1"># 更改列名</span>
+words.data<span class="o">$</span>word <span class="o">=</span> <span class="kp">as.character</span><span class="p">(</span>words.data<span class="o">$</span>word<span class="p">)</span>
+words.data<span class="o">$</span>stem <span class="o">=</span> wordStem<span class="p">(</span>words.data<span class="o">$</span>word<span class="p">)</span>  <span class="c1"># 词干化</span>
+</code></pre></div>
+<p>接下来从中取出与字典相对应的词干，即剔除停止词，并按词干的频率排序。</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># 将词干化后的文档对应到词干化后的字典</span>
+dic.stem <span class="o">=</span> <span class="kt">data.frame</span><span class="p">(</span>stem <span class="o">=</span> <span class="kp">unique</span><span class="p">(</span>dic.order<span class="o">$</span>dictionary.stem<span class="p">))</span>
+words.map <span class="o">=</span> <span class="kp">merge</span><span class="p">(</span>dic.stem<span class="p">,</span> words.data<span class="p">)</span>
+words.map <span class="o">=</span> words.map<span class="p">[</span><span class="kp">order</span><span class="p">(</span>words.map<span class="o">$</span>fre<span class="p">,</span> decreasing <span class="o">=</span> <span class="bp">T</span><span class="p">),</span> <span class="p">]</span>  <span class="c1"># 根据词频排序</span>
+</code></pre></div><div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># 看看一共出现过多少个词汇</span>
+<span class="p">(</span>appear <span class="o">=</span> <span class="kp">length</span><span class="p">(</span><span class="kp">unique</span><span class="p">(</span>words.map<span class="o">$</span>stem<span class="p">)))</span>
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">[1] 1600
+</code></pre></div><div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># 看看有多少词汇未曾出现过</span>
+<span class="p">(</span>non_app <span class="o">=</span> <span class="kp">nrow</span><span class="p">(</span>dic.stem<span class="p">)</span> <span class="o">-</span> appear<span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">[1] 1769
+</code></pre></div>
+<p>最后通过计算得到出现过的词汇个数，结果有点令人惊讶，新东方词汇共3619词，词干化后有3370个词干，而近十年的考研试卷中出现过的词干仅有1600个，未出现过的有1770个，这意味这有一半以上的词汇都未曾出现！看来《新东方考研英语单词》只需要背会一半就够了！</p>
+
+<p>那么，来看一下需要背哪一半。出现频率最高的30个词干是：</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kp">print</span><span class="p">(</span><span class="kp">head</span><span class="p">(</span>words.map<span class="p">,</span> <span class="m">30</span><span class="p">),</span> row.names <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">       stem         word fre
+         be           be 241
+         or           or 127
+  paragraph    paragraph  74
+     social       social  72
+        out          out  54
+     author       author  45
+       like         like  39
+     accord    according  38
+     public       public  38
+      state        state  37
+       time         time  37
+      feder      federal  35
+       data         data  33
+       educ    education  32
+     inform  information  31
+      human        human  30
+     follow    following  29
+   influenc    influence  28
+      power        power  28
+   intellig intelligence  26
+      polit    political  26
+      state       states  25
+         be        being  24
+     govern   government  24
+     stress       stress  24
+ intellectu intellectual  23
+     nation     national  23
+     consum    consumers  22
+     differ    different  21
+     econom     economic  21
+</code></pre></div>
+<p>结果有点意外，其中竟然包含了&#39;be&#39;,&#39;like&#39;,&#39;time&#39;,&#39;data&#39;,&#39;human&#39;,&#39;power&#39;,&#39;find&#39;这样的简单词汇，直觉上应该属于停止词。</p>
+
+<p>验证一下它们是否真的在字典里：</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kr">for</span> <span class="p">(</span>words <span class="kr">in</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;be&quot;</span><span class="p">,</span> <span class="s">&quot;like&quot;</span><span class="p">,</span> <span class="s">&quot;time&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">,</span> <span class="s">&quot;human&quot;</span><span class="p">,</span> <span class="s">&quot;power&quot;</span><span class="p">,</span> <span class="s">&quot;find&quot;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kp">print</span><span class="p">(</span>dic.order<span class="p">[</span>dic.order<span class="o">$</span>dictionary.stem <span class="o">==</span> words<span class="p">,</span> <span class="p">])</span>
+    <span class="kp">cat</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">     dictionary dictionary.stem dic.fre
+1069      being              be       1
+
+     dictionary dictionary.stem dic.fre
+3331     likely            like       1
+
+     dictionary dictionary.stem dic.fre
+2373     timely            time       1
+
+    dictionary dictionary.stem dic.fre
+256       data            data       1
+
+     dictionary dictionary.stem dic.fre
+1489   humanity           human       1
+
+    dictionary dictionary.stem dic.fre
+898   powerful           power       1
+
+     dictionary dictionary.stem dic.fre
+3277    finding            find       1
+</code></pre></div>
+<p>通过验证，“data”确实出现在字典中，而“be”则是“being”的词干，“find”是“finding”的词干，可见词干化后一些停止词趁虚而入了。果然英语文化也是博大精深，在词汇变化和一次多义方面令人很难琢磨（准确的说是令机器很难琢磨，或者令我难以琢磨，让我还没有找到一个有效的办法完全去除这些麻烦的停止词）。</p>
+
+<p>不过到这里倒不必吹毛求疵的人工去除停止词，就当是在提醒我们这些简单词的变化形式，比如“finding”不仅是“find”的现代分词，还有&#39;发现物，研究结果&#39;的意思。</p>
+
+<h2 id="四-结果输出">(四) 结果输出</h2>
+
+<p>将词干出现的频率汇总并由高到低排序，同时显示出词干化前的词汇及其相应的出现频率，写入一个文件方便查看。</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># 按词干汇总</span>
+stem.count <span class="o">=</span> aggregate<span class="p">(</span>fre <span class="o">~</span> stem<span class="p">,</span> data <span class="o">=</span> words.map<span class="p">,</span> <span class="kp">sum</span><span class="p">)</span>
+<span class="c1"># 排序</span>
+stem.count <span class="o">=</span> stem.count<span class="p">[</span><span class="kp">order</span><span class="p">(</span>stem.count<span class="o">$</span>fre<span class="p">,</span> decreasing <span class="o">=</span> <span class="bp">T</span><span class="p">),</span> <span class="p">]</span>
+<span class="c1"># 查看频数最大的十个词干</span>
+<span class="kp">head</span><span class="p">(</span>stem.count<span class="p">,</span> <span class="m">10</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">          stem fre
+164         be 267
+1012        or 127
+1042 paragraph  82
+1356    social  73
+733      human  65
+1389     state  65
+880       like  59
+143     author  56
+1020       out  54
+1177    public  50
+</code></pre></div><div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># 写出到文件 </span>
+<span class="kr">for</span> <span class="p">(</span>i <span class="kr">in</span> stem.count<span class="o">$</span>stem<span class="p">)</span> <span class="p">{</span>
+  write.table<span class="p">(</span>stem.count<span class="p">[</span>stem.count<span class="o">$</span>stem <span class="o">==</span> i<span class="p">,</span> <span class="p">],</span> <span class="s">&#39;words_fre.txt&#39;</span><span class="p">,</span> 
+              append<span class="o">=</span><span class="bp">T</span><span class="p">,</span> row.names<span class="o">=</span><span class="bp">F</span><span class="p">,</span> col.names<span class="o">=</span><span class="bp">F</span><span class="p">)</span> 
+  write.table<span class="p">(</span>words.data<span class="p">[</span>words.data<span class="o">$</span>stem<span class="o">==</span>i<span class="p">,</span> <span class="p">],</span> <span class="s">&#39;words_fre.txt&#39;</span><span class="p">,</span> 
+              append<span class="o">=</span><span class="bp">T</span><span class="p">,</span> row.names<span class="o">=</span><span class="bp">F</span><span class="p">)</span> 
+  <span class="kp">write</span><span class="p">(</span><span class="s">&#39;\n&#39;</span><span class="p">,</span> <span class="s">&#39;words_fre.txt&#39;</span><span class="p">,</span> append<span class="o">=</span><span class="bp">T</span><span class="p">)</span> 
+<span class="p">}</span>
+</code></pre></div>
+<p>已经写出来的文件words_fre.txt。</p>
+
+<p>最后，制作一个词云展示前100个高频词干(不是单词)：</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kn">require</span><span class="p">(</span>wordcloud<span class="p">)</span>
+<span class="c1">## &#39;be&#39;这个单词出现次数远高于其他词汇，其他绘制出的单词都太小，故人工剔除</span>
+being_fre <span class="o">=</span> stem.count<span class="o">$</span>fre<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">-</span> words.map<span class="o">$</span>fre<span class="p">[</span>words.map<span class="o">$</span>word <span class="o">==</span> <span class="s">&quot;be&quot;</span><span class="p">]</span>
+wordcloud<span class="p">(</span>stem.count<span class="o">$</span>stem<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">],</span> 
+          <span class="kt">c</span><span class="p">(</span>being_fre<span class="p">,</span> stem.count<span class="o">$</span>fre<span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">100</span><span class="p">]),</span> 
+          <span class="kt">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span> <span class="m">0.5</span><span class="p">))</span>
+</code></pre></div>
+<p><img src="http://badbye.github.io/images/cloud.png"/></p>
+
+            </div>
+
+             <div class="pagination" style="clear:both;">
+              
+                <div style="float: left; display:inline-block">下一篇: <a class="btn btn-default" href="/badbye.github.com/2013/09/$R%5E2$%E5%A6%82%E4%BD%95%E5%B0%8F%E4%BA%8E0%EF%BC%9F" class="next">$R^2$如何小于0？</a>
+                </div>
+              
+            <div>
+              
+            </div>
+            </div>
+
+              
+              <div class="ds-thread" data-thread-key="/2013/09/考研英语词频计算" data-title="考研英语词频计算" data-url="http://badbye.github.io//2013/09/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD%E8%AF%8D%E9%A2%91%E8%AE%A1%E7%AE%97">
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:'yalei'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+  </script>
+</div>
+              
+            </div>
+          </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+/*js file to load mathJax*/
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+           extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+
+  MathJax.Hub.Queue(function() {
+      // Fix <code> tags after MathJax finishes running. This is a
+      // hack to overcome a shortcoming of Markdown. Discussion at
+      // https://github.com/mojombo/jekyll/issues/199
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12 footer navbar-inverse navbar-fixed-bottom">
+            <p class="copyright">&copy;2015 BADBYE. Powered by <a href="http://jekyllrb.com">Jekyll</a>, theme by <a href="https://github.com/scotte/jekyll-clean">Scott Emmons</a>
+            under
+            <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution</a></p>
+        </div>
+    </div>
+</div>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63950333-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+
+
+
+</body>
+</html>
+

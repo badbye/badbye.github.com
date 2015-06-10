@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BADBYE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/badbye.github.com/js/jquery.min.js"></script>
+    <script src="/badbye.github.com/js/bootstrap.min.js"></script>
+    <link href="/badbye.github.com/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/badbye.github.com/css/theme.css" rel="stylesheet">
+    <link href="/badbye.github.com/css/pygments.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/badbye.github.com/">BADBYE</a>
+              </div>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/badbye.github.com/">Home</a></li>
+                    <li class="active visible-xs-block"><a href="/badbye.github.com/links.html">Links</a></li>
+                    <li class="active"><a href="/badbye.github.com/archive.html">Archive</a></li>
+                    <li class="active"><a href="/badbye.github.com/about.html">About</a></li>
+                    <li class="active"><a href="/badbye.github.com/feed.xml">RSS</a></li>
+                    
+                      <li class="active"><a href="https://github.com/badbye/badbye.github.com">Github</a></li>
+                    
+                </ul>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container container-left">
+    <div class="row">
+        <div class="col-md-3 hidden-xs">
+            <div class="sidebar well">
+Welcome to my blog!
+</div>
+
+<div class="sidebar well" id = "recentPosts">
+    <h1>Recent Posts</h1>
+    <ul>
+        
+          <li><a href="/badbye.github.com/2015/04/Rmd2pdf">Rmd到PDF的转换</a></li>
+        
+          <li><a href="/badbye.github.com/2014/10/Logistic%20Regression%20in%20R%20and%20Python">Logistic Regression in R and Python</a></li>
+        
+          <li><a href="/badbye.github.com/2013/11/%E9%9D%9E%E5%8F%82%E6%95%B0%E7%BB%9F%E8%AE%A1">非参数统计</a></li>
+        
+          <li><a href="/badbye.github.com/2013/11/%E7%AC%AC%E5%85%AD%E5%B1%8AR%E8%AF%AD%E8%A8%80%E4%BC%9A%E8%AE%AE%E8%AE%B0%E4%BA%8B">第六届R语言会议记事</a></li>
+        
+          <li><a href="/badbye.github.com/2013/09/$R%5E2$%E5%A6%82%E4%BD%95%E5%B0%8F%E4%BA%8E0%EF%BC%9F">$R^2$如何小于0？</a></li>
+        
+    </ul>
+</div>
+
+<div class="sidebar well" id="links">
+<h1>Links</h1>
+<ul>
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li>
+</ul>
+
+</div>
+
+        </div>
+        <div class="col-md-9">
+          <div class="article">
+            <div class="well">
+                <h1><a href="/badbye.github.com/2013/11/%E7%AC%AC%E5%85%AD%E5%B1%8AR%E8%AF%AD%E8%A8%80%E4%BC%9A%E8%AE%AE%E8%AE%B0%E4%BA%8B">Nov 4, 2013 - 第六届R语言会议记事</a></h1>
+<!--              
+                <p class="author"><a href="#disqus_thread">Comments</a></p>
+             -->
+            <div class="post-content">
+            <p>近两年着实走了不少地方，见了许多美丽风景，做了些许二逼趣事，但又似乎像背英语一样过目即忘。其实也不能说是忘了，只是一直没去想而已。有必要写写日记。</p>
+
+<p>继上次的古典骇客音乐会，这次的R语言会议是第二个让我感受到魔都大都市气息的地方。学术界和业界大牛云集，终于见到统计之都里李舰，魏太云，cloudy，魔王等真人风采。可惜两天报告下来能消化的倒不多。</p>
+
+<h2 id="林智仁教授">林智仁教授</h2>
+
+<p>之前在会议安排里看到几篇报告的摘要都是英文的，顿时觉得会不会太高端了些？第一个报告这位林教授连脚注里的简介都是英文的，以至于根本没细看。后来到现场才意识到这位就是libsvm包的开发者，瞬间崇拜万分。</p>
+
+<p>林教授以自身经历分享了编写机器学习和数据挖掘软件的经验，对我这毛头小子基本是没什么帮助的。通篇演讲也是中英混杂，好在之前有在coursera和网易修过机器学习的课，竟然都听懂了，不由的小得意一下。中间有讲到些模型改进的措施，比如数据的预处理，核函数的选择以及参数调整有借鉴之处。想起本科论文时的文本分类只简单做了稀疏矩阵的删减和核函数的选择，参数没调就扔进去跑了。结果训练集准确率98%，测试集只有85%左右，严重过拟合就那么交了，反正老师看不懂。真是惭愧惭愧…</p>
+
+<h2 id="何通">何通</h2>
+
+<p>这位就是当年在果壳写篇文章被老师拿去当考题的大神—严酷的魔王了，也是直到他的报告才知道魔王真相。分享了豆瓣标签数据的整理和分析，整场报告围绕一个主题层层递进，最符合我的审美观。</p>
+
+<p>豆瓣里音乐，电影等的标签是由用户自己打的，于是各种奇葩的标签层出不穷，需要先机器预处理再由工作人员手工操作，一来给产品加标签，二来给用户加标签，用于后期的推荐系统。</p>
+
+<p>基本的去噪分词倒是不难做的。但分词后数据量仍然不小，人工很难处理，于是就有了下边很有趣的基于关联规则的近义词处理。比如&quot;惊悚&quot;，“恐怖&quot;和&quot;悬疑&quot;等标签表达意义相近，可以由机器直接转化为一个标签，省去不少麻烦。具体的算法大概就是计算一个条件概率，比如在对一部电影的描述中如果( P(词B出现|词A出现) )很大，就意味着A和B是对同一类事物的描述，含义相近。最后设置阈值使得大于某个值的条件概率所对应的两个词归为近义词。但是A和B相近同样意味着B和A相近，那相应的还有另一个条件概率( P(词A出现|词B出现) )呢，这个怎么处理倒没介绍，如果是我的话会选两者中比较大的概率，有机会要折腾一下。</p>
+
+<p>本来以为到这一步就结束，没想到后续还有一个标签的层次划分，给标签划分层次，比如&quot;日本动漫&quot;这一个标签下再划分有&quot;热血”，“励志&quot;等标签，这样一个类似树状图的东西，但各颗树又相互交叠，比如&quot;军事电影&quot;里同样会有&quot;热血”，“励志&quot;这样的标签，这样一层一层的划分出来，越上层的标签越抽象，越底层的越具体，之后可以尝试更有趣的推荐。对&quot;励志&quot;的&quot;日本动漫&quot;爱好者推荐其他的日本动漫，或者&quot;军事电影&quot;中励志电影，甚至跨越影视的界限推介些励志的书籍。相关的算法同样是计算条件概率的问题，如果( P(A|B) )很大但( P(B|A) )却很小就说B从属于A，因为B出现时A有很大概率出现反之却不然，说明A包含B。印象中就是这个样子了，总感觉哪里错了的样子，回头再瞅瞅幻灯片吧。</p>
+
+<h2 id="李舰">李舰</h2>
+
+<p>舰叔出品，必属精品。</p>
+
+<p>这次大会介绍了他的文本挖掘新包:tmcn。相对于之前的Rweibo和Rwordseg来说，新包发布好低调，之前竟然没听说一点消息。舰叔的博客也还没更新，附个安装方法:</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r">install.packages<span class="p">(</span><span class="s">&quot;tmcn&quot;</span><span class="p">,</span> repos <span class="o">=</span> <span class="s">&quot;http://R-Forge.R-project.org&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>此包主要用于中文的文本挖掘，提供了一些我觉得很有用的函数:</p>
+
+<ul>
+<li>toUTF8
+无论是在windows里，还是linux下我都被中文的各种编码蹂躏过。网页里的编码&quot;GBK”，“GBK2312&quot;和&quot;BIG5&quot;等各种各样都有，知道它们是何种编码还好，可以用<em>iconv</em>函数来转换。问题是大部分情况下系统不能识别编码我们也不知道，只能挨个尝试。现在好了，<em>toUTF8</em>把一切中文字符转化为UTF8，任它千万变化，我只一招制敌!世界终于清静了…</li>
+<li><p>toPinyin
+这个函数把汉字转化为拼音，之所以有趣是因为另一个包<em>ggmap</em>里有一个<em>geocode</em>函数可以根据地址得到经纬度坐标，但变量只能是拼音，之前一直找把汉字转化为拼音的函数，现在终于有了。终于可以在地图上毫无压力的标注城市了。</p></li>
+<li><p>stopwordsCN
+包含了503个中文的停止词，除了感动我还能说些什么？</p></li>
+</ul>
+
+<p>另外这个包与tm包相比更方便使用，其数据格式还是原本的向量，矩阵，列表和数据框等，没有建立新的S3类。回想起第一次用tm包连建立和查看语料库都得翻一遍帮助文档，真是太辛酸了。</p>
+
+<h2 id="陈逸波">陈逸波</h2>
+
+<p>经常在统计之都的求助帖里见到一位ID名为波波头一头的大神回复&quot;是这样嘛？(略去一行代码)”，然后我默默的打开R看看这个函数的帮助，欣喜的发现还有这么好使的函数。</p>
+
+<p>见到本人已经比微博和统计之都里的头像瘦多了，大概是经常跑步的缘故。回到正题。波波前辈分享了在kaggle实战的经验，在数据属性都不知道的前提下达到91%的预测准确率，受益良多。虽然说简单些就是了解数据，特征选取，建模和改进的过程，但过程之艰辛需要不断的尝试，假设，实验。终于稍微明白些什么叫对数据的敏感了。</p>
+
+<h2 id="其他">其他</h2>
+
+<p>第二位来自台湾的林祯舜教授，讲述了大数据对统计教育的影响，真应该上传视频让所有统计老师都听听的…</p>
+
+<p>ebay专场讲述了R在ebay的应用，包括了Rhipe和Rhadoop的介绍，终于知道这俩单词怎么发音了，同时也好像搭建个集群玩玩，嘛时候把宿舍四台电脑连起来跑跑2000W？另:感觉ebay的人都有种气场，如此牛逼的跨国公司就是这么的不一样么？附个做报告时被拍最多的ebay美女照片。 [不好意思，图片被我弄丢了╮(╯_╰)╭]</p>
+
+<p>会议之前就被echarts震撼到，各种交互式操作实在是忽悠人的最佳利器。可惜跟D3一样是个js库，想起暑假在菲律宾还学过几招D3，现在只能差不多看懂代码但写不出来了。好在魏太云和周扬开发了R的接口recharts，在R里也能方便的画出来了，还能跟shiny和knitr结合。前两天刚用shiny写完的web应用又要改了。</p>
+
+<p>多元作业的paper还没读，linux下的latex又要重新学。听两天报告就又给自己找这么多事儿，真是能自娱自乐。禁不住又要一声悠远深长的叹息，唉~~~</p>
+
+            </div>
+
+             <div class="pagination" style="clear:both;">
+              
+                <div style="float: left; display:inline-block">下一篇: <a class="btn btn-default" href="/badbye.github.com/2013/11/%E9%9D%9E%E5%8F%82%E6%95%B0%E7%BB%9F%E8%AE%A1" class="next">非参数统计</a>
+                </div>
+              
+            <div>
+              
+                <div style="float: right; display:inline-block">上一篇: <a class="btn btn-default" href="/badbye.github.com/2013/09/$R%5E2$%E5%A6%82%E4%BD%95%E5%B0%8F%E4%BA%8E0%EF%BC%9F" class="previous">$R^2$如何小于0？</a>
+                </div>
+              
+            </div>
+            </div>
+
+              
+              <div class="ds-thread" data-thread-key="/2013/11/第六届R语言会议记事" data-title="第六届R语言会议记事" data-url="http://badbye.github.io//2013/11/%E7%AC%AC%E5%85%AD%E5%B1%8AR%E8%AF%AD%E8%A8%80%E4%BC%9A%E8%AE%AE%E8%AE%B0%E4%BA%8B">
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:'yalei'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+  </script>
+</div>
+              
+            </div>
+          </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+/*js file to load mathJax*/
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+           extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+
+  MathJax.Hub.Queue(function() {
+      // Fix <code> tags after MathJax finishes running. This is a
+      // hack to overcome a shortcoming of Markdown. Discussion at
+      // https://github.com/mojombo/jekyll/issues/199
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12 footer navbar-inverse navbar-fixed-bottom">
+            <p class="copyright">&copy;2015 BADBYE. Powered by <a href="http://jekyllrb.com">Jekyll</a>, theme by <a href="https://github.com/scotte/jekyll-clean">Scott Emmons</a>
+            under
+            <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution</a></p>
+        </div>
+    </div>
+</div>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63950333-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BADBYE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/badbye.github.com/js/jquery.min.js"></script>
+    <script src="/badbye.github.com/js/bootstrap.min.js"></script>
+    <link href="/badbye.github.com/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/badbye.github.com/css/theme.css" rel="stylesheet">
+    <link href="/badbye.github.com/css/pygments.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/badbye.github.com/">BADBYE</a>
+              </div>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/badbye.github.com/">Home</a></li>
+                    <li class="active visible-xs-block"><a href="/badbye.github.com/links.html">Links</a></li>
+                    <li class="active"><a href="/badbye.github.com/archive.html">Archive</a></li>
+                    <li class="active"><a href="/badbye.github.com/about.html">About</a></li>
+                    <li class="active"><a href="/badbye.github.com/feed.xml">RSS</a></li>
+                    
+                      <li class="active"><a href="https://github.com/badbye/badbye.github.com">Github</a></li>
+                    
+                </ul>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container container-left">
+    <div class="row">
+        <div class="col-md-3 hidden-xs">
+            <div class="sidebar well">
+Welcome to my blog!
+</div>
+
+<div class="sidebar well" id = "recentPosts">
+    <h1>Recent Posts</h1>
+    <ul>
+        
+          <li><a href="/badbye.github.com/2015/04/Rmd2pdf">Rmd到PDF的转换</a></li>
+        
+          <li><a href="/badbye.github.com/2014/10/Logistic%20Regression%20in%20R%20and%20Python">Logistic Regression in R and Python</a></li>
+        
+          <li><a href="/badbye.github.com/2013/11/%E9%9D%9E%E5%8F%82%E6%95%B0%E7%BB%9F%E8%AE%A1">非参数统计</a></li>
+        
+          <li><a href="/badbye.github.com/2013/11/%E7%AC%AC%E5%85%AD%E5%B1%8AR%E8%AF%AD%E8%A8%80%E4%BC%9A%E8%AE%AE%E8%AE%B0%E4%BA%8B">第六届R语言会议记事</a></li>
+        
+          <li><a href="/badbye.github.com/2013/09/$R%5E2$%E5%A6%82%E4%BD%95%E5%B0%8F%E4%BA%8E0%EF%BC%9F">$R^2$如何小于0？</a></li>
+        
+    </ul>
+</div>
+
+<div class="sidebar well" id="links">
+<h1>Links</h1>
+<ul>
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li>
+</ul>
+
+</div>
+
+        </div>
+        <div class="col-md-9">
+          <div class="article">
+            <div class="well">
+                <h1><a href="/badbye.github.com/2015/04/Rmd2pdf">Apr 29, 2015 - Rmd到PDF的转换</a></h1>
+<!--              
+                <p class="author"><a href="#disqus_thread">Comments</a></p>
+             -->
+            <div class="post-content">
+            <p>对于用惯了Word的来说，Latex大概是一个噩梦，好在能用惯Word的人并不多。各位观众应该都或多或少的见过各种Word排版技巧充斥在朋友圈，人人网，QQ空间等。跟Latex的命令一样，让人看了就头疼。</p>
+
+<p>如果你会用Knitr，那就一定也会用Markdown(二者都不会的看官请移步<a href="http://cos.name/2012/06/reproducible-research-with-knitr/">这里</a>)。Markdown是HTML的简化，语法简洁，十分钟就能学完。只是Knitr初出之时，Markdown也就只能转成HTML而已。如今Knitr已3岁有余，从Markdown到PDF的转化也很成熟了。话不多说，让我们直奔主题。</p>
+
+<h2 id="预先安装">预先安装</h2>
+
+<ul>
+<li>最新版本的Rstudio(已经内置的Pandoc工具，没听说过这个工具也没关系，装上最新版的Rstudio就是了)。</li>
+<li>R包：<code>knitr</code>，<code>rmarkdown</code>，均可从CRAN上直接下载。</li>
+<li>Tex环境。Windows用户安装CTEX，Linux用户安装Texlive，Mac用户安装MacTex。似乎各种版本都有精简版和完整版，建议安装完整版。</li>
+</ul>
+
+<h2 id="英文环境">英文环境</h2>
+
+<p>新建一个Rmd文档，其头文件应该是以下这种格式：</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">---</span>
+title<span class="o">:</span> <span class="s">&quot;XXX&quot;</span>
+author<span class="o">:</span> <span class="s">&quot;xxx&quot;</span>
+<span class="kp">date</span><span class="o">:</span> <span class="s">&quot;xxx&quot;</span>
+output<span class="o">:</span> html_document
+<span class="o">---</span>
+</code></pre></div>
+<p>如果你的Rmd文档是全英的，只需要把<code>html_document</code>改成<code>pdf_document</code>。Ctrl+S保存后，编译按钮会自动从<code>Knit HTML</code>变成<code>Knit PDF</code>，轻点鼠标即大功告成。</p>
+
+<p><img src="http://badbye.github.io/images/knit.png" alt="knit"></p>
+
+<p>这里简单说下转换的流程是：</p>
+
+<ol>
+<li>knitr运行Rmd中的代码，生成md文件</li>
+<li>神器Pandoc把md文件转化为tex文件</li>
+<li>Latex环境编译tex文件生产PDF</li>
+</ol>
+
+<h2 id="中文环境">中文环境</h2>
+
+<p>如果Rmd文档中有中文字符，那你就呵呵了。因为在第二步md到tex的转化中，是按照预先设置的模板来的，而默认的模板中并没有设置中文字体。</p>
+
+<p>如果你是Latex和Padoc的高手，折腾一下模板就能搞定了。初学者也不用紧张，已经有高手把模板封装打包了，只需安装<a href="https://github.com/rstudio/rticles"><code>rticles</code></a>这个包即可：</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r">devtools<span class="o">::</span>install_github<span class="p">(</span><span class="s">&quot;rstudio/rticles&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>安装完成后，新建一个Rmd文件，从模板中选择<code>CTex Documents</code>：</p>
+
+<p><img src="http://badbye.github.io/images/ctex.png" alt="ctex"></p>
+
+<p>可以看到，<code>rticles</code>还提供了其他的模板如<code>ACM</code>，<code>ACS</code>和<code>Journal of Statistical Software</code>等。没错，以后要投稿这些期刊的话，你可以直接用Markdown的语法来写了！回到<code>CTex Documents</code>模板中来，作者已经里边阐述了各系统下Rmd到PDF的转化问题。如果你是Windows用户，轻点鼠标即可生产精致的PDF文件。如果你是Linux或者Mac用户，只能无奈的再次呵呵了。不过别急着丧气，读读模板中的内容，其中已有妙计相赠。</p>
+
+<h2 id="其他">其他</h2>
+
+<p>(1)对于其他的Rmd文档，想转成PDF的话，只需要把<code>CTex Documents</code>模板中的头信息粘贴过去，修改其中的title和author信息即可。</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">---</span>
+title<span class="o">:</span> <span class="s">&quot;在R Markdown文档中使用中文&quot;</span>
+author<span class="o">:</span>
+  <span class="o">-</span> 谢益辉
+  <span class="o">-</span> 邱怡轩
+  <span class="o">-</span> 于淼
+documentclass<span class="o">:</span> ctexart
+output<span class="o">:</span>
+  pdf_document<span class="o">:</span>
+    fig_caption<span class="o">:</span> yes
+    latex_engine<span class="o">:</span> xelatex
+    number_sections<span class="o">:</span> yes
+    template<span class="o">:</span> <span class="o">!</span>expr rticles<span class="o">::</span>ctex_template<span class="p">()</span>
+    toc<span class="o">:</span> yes
+classoption<span class="o">:</span> <span class="s">&quot;hyperref`r if (.Platform$OS.type != &#39;windows&#39;) &#39;,nofonts&#39;`&quot;</span>
+<span class="o">---</span>
+</code></pre></div>
+<p>(2)按钮<code>Knitr PDF</code>背后所做的事是由<code>rmarkdown</code>包的<code>render</code>函数支持的，相应的代码是：</p>
+<div class="highlight"><pre><code class="language-r" data-lang="r">rmarkdown<span class="o">::</span>render<span class="p">(</span><span class="s">&#39;toremove.Rmd&#39;</span><span class="p">,</span> pdf_document<span class="p">())</span>
+</code></pre></div>
+<p>如果有多个文档，写个脚本就能把整个流程完全自动化了。</p>
+
+<p>(3)如果Markdown中包含HTML标签，输出HTML是毫无影响的。比如<code>&lt;img src=picture.png/&gt;</code>与<code>![pic](picture.png)</code>是等价的，前者是HTML标签，后者是md语法。但是Pandoc并不能识别前者的HTML标签并转化成相应的Tex代码。所以从md到PDF的转化，不能夹杂HTML标签。</p>
+
+            </div>
+
+             <div class="pagination" style="clear:both;">
+              
+            <div>
+              
+                <div style="float: right; display:inline-block">上一篇: <a class="btn btn-default" href="/badbye.github.com/2014/10/Logistic%20Regression%20in%20R%20and%20Python" class="previous">Logistic Regression in R and Python</a>
+                </div>
+              
+            </div>
+            </div>
+
+              
+              <div class="ds-thread" data-thread-key="/2015/04/Rmd2pdf" data-title="Rmd到PDF的转换" data-url="http://badbye.github.io//2015/04/Rmd2pdf">
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:'yalei'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+  </script>
+</div>
+              
+            </div>
+          </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+/*js file to load mathJax*/
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+           extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+
+  MathJax.Hub.Queue(function() {
+      // Fix <code> tags after MathJax finishes running. This is a
+      // hack to overcome a shortcoming of Markdown. Discussion at
+      // https://github.com/mojombo/jekyll/issues/199
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12 footer navbar-inverse navbar-fixed-bottom">
+            <p class="copyright">&copy;2015 BADBYE. Powered by <a href="http://jekyllrb.com">Jekyll</a>, theme by <a href="https://github.com/scotte/jekyll-clean">Scott Emmons</a>
+            under
+            <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution</a></p>
+        </div>
+    </div>
+</div>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63950333-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+
+
+
+</body>
+</html>
+

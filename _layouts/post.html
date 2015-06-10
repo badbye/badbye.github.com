@@ -1,0 +1,72 @@
+{% include header.html %}
+
+<div class="container container-left">
+    <div class="row">
+        <div class="col-md-3 hidden-xs">
+            {% include sidebar.html %}
+        </div>
+        <div class="col-md-9">
+          <div class="article">
+            <div class="well">
+                <h1><a href="{{ site.baseurl}}{{ page.url }}">{{ page.date | date: "%b %-d, %Y" }} - {{ page.title }}</a></h1>
+<!--              {% if site.comments == true and page.comments == true and site.disqus != '' %}
+                <p class="author"><a href="#disqus_thread">Comments</a></p>
+            {% endif %} -->
+            <div class="post-content">
+            {{ content }}
+            </div>
+
+             <div class="pagination" style="clear:both;">
+              {% if page.next %}
+                <div style="float: left; display:inline-block">下一篇: <a class="btn btn-default" href="{{ site.baseurl}}{{ page.next.url }}" class="next">{{page.next.title}}</a>
+                </div>
+              {% endif %}
+            <div>
+              {% if page.previous %}
+                <div style="float: right; display:inline-block">上一篇: <a class="btn btn-default" href="{{ site.baseurl}}{{ page.previous.url }}" class="previous">{{page.previous.title}}</a>
+                </div>
+              {% endif %}
+            </div>
+            </div>
+
+              {% if page.comments %}
+              {% include comments.html %}
+              {% endif %}
+            </div>
+          </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+/*js file to load mathJax*/
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+           extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+
+  MathJax.Hub.Queue(function() {
+      // Fix <code> tags after MathJax finishes running. This is a
+      // hack to overcome a shortcoming of Markdown. Discussion at
+      // https://github.com/mojombo/jekyll/issues/199
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+{% include footer.html %}
