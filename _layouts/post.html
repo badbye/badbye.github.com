@@ -12,22 +12,23 @@
                 <div class="post-content">
                     {{ content }}
                 </div>
-                <div class="pagination" style="clear:both;">
+                <div class="pagination" style="display:inline">
                     {% if page.next %}
-                      <span style="float:left">下一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.next.url }}" class="next">{{page.next.title}}</a>
+                      <span style="float:left">下一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.next.url }}">{{page.next.title}}</a>
                       </span>
                     {% endif %}
                     {% if page.previous %}
-                      <span style="float:right">上一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.previous.url }}" class="previous">{{page.previous.title}}</a>
+                      <span style="float:right">上一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.previous.url }}">{{page.previous.title}}</a>
                       </span>
                     {% endif %}
                 </div>
+                {% if page.comments %}
+                    {% include comments.html %}
+                {% endif %}
             </div>
-            {% if page.comments %}
-                {% include comments.html %}
-            {% endif %}
-            </div>
+          </div>
         </div>
     </div>
 </div>
+
 {% include footer.html %}
