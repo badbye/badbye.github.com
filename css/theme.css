@@ -5,6 +5,9 @@ body {
 
 .copyright {
     color: #ffffff;
+    margin-bottom: 3px;
+    height: 15px;
+    font-size: 10;
 }
 
 .footer {
@@ -79,8 +82,4 @@ pre {
     margin: 5px;
     border-style: none;
     border-radius: 0;
-}
-
-.language-text code{
-    background-color: #f0f0f0;
 }
