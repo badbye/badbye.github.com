@@ -18,13 +18,13 @@
 
              <div class="pagination" style="clear:both;">
               {% if page.next %}
-                <div style="float: left; display:inline-block">下一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.next.url }}" class="next">{{page.next.title}}</a>
-                </div>
+                <span style="text-align:left">下一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.next.url }}" class="next">{{page.next.title}}</a>
+                </span>
               {% endif %}
             <div>
               {% if page.previous %}
-                <div style="float: right; display:inline-block">上一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.previous.url }}" class="previous">{{page.previous.title}}</a>
-                </div>
+                <span style="text-align:right">上一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.previous.url }}" class="previous">{{page.previous.title}}</a>
+                </span>
               {% endif %}
             </div>
             </div>
