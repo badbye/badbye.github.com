@@ -64,13 +64,13 @@ p.copyright {
     font-family: monospace;
 }
 
-.next {
+/*.next {
     position: left;
 }
 
 .previous {
     position: right;
-}
+}*/
 
 pre {
     background: #ece2f0; 
