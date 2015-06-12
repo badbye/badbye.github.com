@@ -3,38 +3,30 @@
 <div class="container container-left">
     <div class="row">
         <div class="col-md-3 hidden-xs">
-            {% include sidebar.html %}
+          {% include sidebar.html %}
         </div>
         <div class="col-md-9">
           <div class="article">
             <div class="well">
                 <h1><a href="{{ site.url}}{{ page.url }}">{{ page.date | date: "%b %-d, %Y" }} - {{ page.title }}</a></h1>
-<!--              {% if site.comments == true and page.comments == true and site.disqus != '' %}
-                <p class="author"><a href="#disqus_thread">Comments</a></p>
-            {% endif %} -->
-            <div class="post-content">
-            {{ content }}
+                <div class="post-content">
+                    {{ content }}
+                </div>
+                <div class="pagination" style="clear:both;">
+                    {% if page.next %}
+                      <span style="text-align:left">下一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.next.url }}" class="next">{{page.next.title}}</a>
+                      </span>
+                    {% endif %}
+                    {% if page.previous %}
+                      <span style="text-align:right">上一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.previous.url }}" class="previous">{{page.previous.title}}</a>
+                      </span>
+                    {% endif %}
+                </div>
             </div>
-
-             <div class="pagination" style="clear:both;">
-              {% if page.next %}
-                <span style="text-align:left">下一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.next.url }}" class="next">{{page.next.title}}</a>
-                </span>
-              {% endif %}
-            <div>
-              {% if page.previous %}
-                <span style="text-align:right">上一篇: <a class="btn btn-default" href="{{ site.url}}{{ page.previous.url }}" class="previous">{{page.previous.title}}</a>
-                </span>
-              {% endif %}
+            {% if page.comments %}
+                {% include comments.html %}
+            {% endif %}
             </div>
-            </div>
-              {% if page.comments %}
-              {% include comments.html %}
-              {% endif %}
-            </div>
-          </div>
-
-
         </div>
     </div>
 </div>
