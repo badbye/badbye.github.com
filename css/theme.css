@@ -6,7 +6,10 @@ body {
 .copyright {
     color: #ffffff;
     margin-bottom: 3px;
-    height: 15px;
+    height: 10px;
+}
+
+.copyright p{
     font-size: 10;
 }
 
