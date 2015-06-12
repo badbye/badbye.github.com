@@ -9,7 +9,7 @@ body {
     height: 10px;
 }
 
-.copyright p {
+p.copyright {
     font-size: 10px;
 }
 
@@ -71,8 +71,6 @@ body {
 .previous {
     position: right;
 }
-
-.highlight{ overflow: auto; } 
 
 pre {
     background: #ece2f0; 
