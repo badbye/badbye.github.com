@@ -57,7 +57,7 @@
                   <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ site.url }}/">{{ site.name }}</a>
-              </div>
+            </div>
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{{ site.url }}/">Home</a></li>
@@ -68,8 +68,13 @@
                     {% if site.github != '' %}
                       <li class="active"><a href="https://github.com/{{ site.github }}">Github</a></li>
                     {% endif %}
+
                 </ul>
               </div>
+            <div class="navbar-header">
+              <!-- baidu search -->
+              {% include search.html %}
+            </div>
         </div>
     </div>
 </div>
