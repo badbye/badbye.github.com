@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Linux权限解读"
-date: 2015-04-28 16:25:06 -0700
+date: 2015-06-24 16:25:06 -0700
 comments: true
 ---
 
