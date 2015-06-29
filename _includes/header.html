@@ -14,6 +14,7 @@
     <link href="{{ site.url }}/css/theme.css" rel="stylesheet">
     <link href="{{ site.url }}/css/pygments.css" rel="stylesheet">
     <link href="{{ site.url }}/css/mermaid.css" rel="stylesheet">
+    <link href="{{ site.url }}/css/mathjax.css" rel="stylesheet">
 
 <!-- Google analytics -->
 {% include analytics.html %}
@@ -31,10 +32,10 @@
       processEnvironments: true,
       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
       TeX: { equationNumbers: { autoNumber: "AMS" },
-           extensions: ["AMSmath.js", "AMSsymbols.js"] }
+           extensions: ["AMSmath.js", "AMSsymbols.js", "tex2jax.js"] }，
+      "HTML-CSS": { scale: 90}
     }
   });
-
   MathJax.Hub.Queue(function() {
       // Fix <code> tags after MathJax finishes running. This is a
       // hack to overcome a shortcoming of Markdown. Discussion at
