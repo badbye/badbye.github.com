@@ -14,9 +14,6 @@
     <link href="{{ site.url }}/css/theme.css" rel="stylesheet">
     <link href="{{ site.url }}/css/pygments.css" rel="stylesheet">
     <link href="{{ site.url }}/css/mermaid.css" rel="stylesheet">
-
-<!-- Google analytics -->
-{% include analytics.html %}
 <!-- configure MathJAx -->
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -28,10 +25,14 @@
       inlineMath: [['$','$'], ['\\(','\\)']],
       displayMath: [['$$','$$'], ['\\[','\\]']],
       processEscapes: true
+    },
+    "HTML-CSS": { 
+      styles: {".MathJax": {color: "#CCCCCC"}} 
     }
   });
 </script>
-
+<!-- Google analytics -->
+{% include analytics.html %}
 </head>
 
 <body>
