@@ -76,3 +76,7 @@ pre {
     border-style: none;
     border-radius: 0;
 }
+
+.img .image {
+    margin:0 auto;
+}
