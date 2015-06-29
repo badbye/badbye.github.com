@@ -30,15 +30,14 @@
       displayMath: [['$$','$$'], ['\\[','\\]']],
       processEscapes: true,
       processEnvironments: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
       TeX: { equationNumbers: { autoNumber: "AMS" },
-           extensions: ["AMSmath.js", "AMSsymbols.js", "tex2jax.js"] }，
-      "HTML-CSS": { 
-        scale: 90
-        preferredFont: "TeX", 
-        availableFonts: ["STIX","TeX"], 
-        styles: {".MathJax": {color: "#CCCCCC"}} 
+           extensions: ["AMSmath.js", "AMSsymbols.js", "tex2jax.js"] 
       }
+    }，
+    "HTML-CSS": { 
+      scale: 90,
+      styles: {".MathJax": {color: "#CCCCCC"}} 
     }
   });
   MathJax.Hub.Queue(function() {
