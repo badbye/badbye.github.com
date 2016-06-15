@@ -8,3 +8,4 @@ index.lock
 PaxHeader/
 _site/
 _draft/
+.DS_Store
