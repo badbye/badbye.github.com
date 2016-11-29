@@ -7,7 +7,7 @@ description: Welcome to my blog!
 encoding: UTF-8
 
 # url is currently only used only for the RSS feed in feed.xml
-url: http://badbye.github.io
+url: http://yalei.name
 
 # baseurl will often be '', but for a project page on gh-pages, it needs to
 # be the project name.
