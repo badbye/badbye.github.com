@@ -74,6 +74,7 @@ sudo usermod -a -G wheel YOUR_USER_NAME  # 给自己的用户添加用户组
 比如经常需要装Python的包，但又不想让其他用户乱装。跟第二个方案差不多。
 
 把`/etc`文件夹改成某个用户和某个用户组下的命令：
+
 ```bash
 sudo chown -R /etc YOUR_USER_NAME:USER_GROUP
 ```
