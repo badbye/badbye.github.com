@@ -1,0 +1,9 @@
+<script>
+  var title_node = document.querySelector('meta[property="og:title"]');
+  var title = document.getElementsByClassName('ds-thread')[0].getAttribute('data-title');
+  title_node.setAttribute('content', title);
+
+  var content = document.getElementsByClassName('post-content')[0].innerText
+  var title_node = document.querySelector('meta[name="description"]');
+  title_node.setAttribute('content', content.substr(0, 100));
+</script>
