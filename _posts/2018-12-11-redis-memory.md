@@ -71,7 +71,7 @@ if __name__ == '__main__':
 ### 基于共享内存的更新方法
 不论怎样，更新内存时`run function to get data from redis`这一步总会有多余的耗时。有没有可能把这部分也优化掉？
 
-随手查到[mmap](https://docs.python.org/3/library/mmap.html)，这家伙把内存数据映射到一个文件，其他进程可以对文件进行读写操作，进而共享控制同一块内存。
+随手查到[mmap](https://docs.python.org/3/library/mmap.html)，这家伙把内存数据映射到一个文件，其他进程可以对文件进行读写操作，进而共享控制同一块内存。[gensim](https://radimrehurek.com/gensim/intro.html)就是用mmap来做并行训练的。
 
 可行的操作是，线下定时更新文件对应的内存数据，线上的N个进程从文件读取更新的数据。这就把内存更新的耗时完全移到线下了，而且多进程共享还能节省内存。唯一的缺点就是，需要再线下维护一个定时任务。
 
